@@ -1,4 +1,7 @@
 from pathlib import Path
+from generators import ordered_sequence
+from generators import unordered_sequence
+
 import json
 
 
@@ -18,7 +21,7 @@ def read_data(file_name, field):
     file_path = cwd_path / file_name
 
 
-def main():
+#def main():
     sequential_data = read_data('sequential.json', 'unordered_numbers')
     print(sequential_data)
     data = read_data('sequential.json', 'ordered_numbers')
@@ -48,5 +51,32 @@ def binary_search(sequence,num):
 
 
 
-if __name__ == "__main__":
-    main()
+#if __name__ == "__main__":
+  #  main()
+import time
+import matplotlib.pyplot as plt
+
+sizes = [10, 50, 100, 500, 1000, 5000, 10000]
+m = {}
+timeslinear = []
+timesbinar = []
+for i in sizes:
+    m[i] = ordered_sequence(i)
+
+for i in sizes:
+    start = time.perf_counter()
+    linear_search(m[i], 6)
+    end = time.perf_counter()
+    timeslinear.append(end-start)
+for i in sizes:
+    start = time.perf_counter()
+    binary_search(m[i], 6)
+    end = time.perf_counter()
+    timesbinar.append(end - start)
+
+plt.plot(sizes, timesbinar)
+plt.plot(sizes, timeslinear)
+plt.xlabel("Velikost vstupu")
+plt.ylabel("Čas [s]")
+plt.title("Ukázkový graf měření")
+plt.show()
