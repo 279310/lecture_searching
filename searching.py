@@ -21,7 +21,9 @@ def read_data(file_name, field):
 def main():
     sequential_data = read_data('sequential.json', 'unordered_numbers')
     print(sequential_data)
+    data = read_data('sequential.json', 'ordered_numbers')
     print(linear_search(sequential_data, 54))
+    print(binary_search(data, 64))
 
 def linear_search(sequence, num):
     pos = []
@@ -32,6 +34,17 @@ def linear_search(sequence, num):
             count+=1
     return {'positions' : pos, 'count' : count}
 
+def binary_search(sequence,num):
+    plus = 0
+    while len(sequence)>0:
+        if num == sequence[int(len(sequence)/2)]:
+            return int(len(sequence)/2) + plus
+        elif num < sequence[int(len(sequence)/2)]:
+            sequence = sequence[0:int(len(sequence)/2)]
+        else:
+            plus += len(sequence[0:int(len(sequence) / 2)+1:])
+            sequence = sequence[int(len(sequence) / 2)+1::]
+    return None
 
 
 
