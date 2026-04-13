@@ -27,6 +27,7 @@ def main():
     data = read_data('sequential.json', 'ordered_numbers')
     print(linear_search(sequential_data, 54))
     print(binary_search(data, 64))
+    print(pattern_search(read_data('sequential.json', 'dna_sequence'), 'ATA'))
 
 def linear_search(sequence, num):
     pos = []
@@ -49,6 +50,12 @@ def binary_search(sequence,num):
             sequence = sequence[int(len(sequence) / 2)+1::]
     return None
 
+def pattern_search(sequence, pattern):
+    indexes = []
+    for i in range(len(sequence)-len(pattern)):
+        if sequence[i:len(pattern)+i:] == pattern:
+            indexes.append(i)
+    return indexes
 
 
 if __name__ == "__main__":
