@@ -21,7 +21,7 @@ def read_data(file_name, field):
     file_path = cwd_path / file_name
 
 
-#def main():
+def main():
     sequential_data = read_data('sequential.json', 'unordered_numbers')
     print(sequential_data)
     data = read_data('sequential.json', 'ordered_numbers')
@@ -51,8 +51,9 @@ def binary_search(sequence,num):
 
 
 
-#if __name__ == "__main__":
-  #  main()
+if __name__ == "__main__":
+    main()
+
 import time
 import matplotlib.pyplot as plt
 
