@@ -53,8 +53,17 @@ def binary_search(sequence,num):
 def pattern_search(sequence, pattern):
     indexes = []
     for i in range(len(sequence)-len(pattern)):
-        if sequence[i:len(pattern)+i:] == pattern:
+        error = 0
+        for j in range(len(pattern)):
+            if sequence[i+j] != pattern[j]:
+                error = -1
+                break
+        if error == 0:
             indexes.append(i)
+    return indexes
+
+
+
     return indexes
 
 
